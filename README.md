@@ -23,6 +23,24 @@ node tools/serve.mjs            # → http://127.0.0.1:8782/  (静态服务器�
 浏览器打开后点 **进入 · Enter**（这一下同时解锁 Web Audio）。作品约 **96.8 秒**一遍：**90.2 秒音乐**（最后半小节收势）+ **观众掌声里的谢幕**（鞠躬 → 起身 → 保持手链退场 → 灯光渐暗，到 96.8s 结束）。音乐一停就进入鞠躬，掌声里不再有任何舞蹈动作；结束后按 `R` 重看。
 **完全离线**：three.js 0.185 与所有素材都已本地化（`assets/three/`），不再依赖 CDN。
 
+## 影像版 / Video
+
+![影像版截帧](film/poster.jpg)
+
+把整场演出（96.8s）渲染成一版 1080p30 MP4：**脚本化运镜、标题与字幕、底部时间轴（六幕 / 时间码 / 播放头），以及四条世界线过去 12 秒的残影轨道**。
+
+- 在线看 / 下载：<https://github.com/felixlee0608/little-swans-worldline/releases/tag/v1.0-film>
+  - `little-swans-film-720p30.mp4` — 1280×720 / 30fps / 55 MB（推荐）
+  - `little-swans-film-1080p30-web.mp4` — 1920×1080 / 30fps / 223 MB
+- 不下载也能看：URL 加 `?film=1` 打开即进入电影模式（实时播放，带同样的时间轴与运镜）。
+- 重新渲染（需要 ffmpeg、Chrome、`playwright-core`）：
+
+```bash
+node tools/serve.mjs &          # 本地静态服务器（默认 8782）
+npm i -D playwright-core        # 或设置 WD_PLAYWRIGHT_DIR
+node tools/render-film.mjs      # → film/little-swans-film-1920x1080-30fps.mp4
+```
+
 ## 操作
 
 | 操作 | 效果 |
@@ -71,16 +89,19 @@ little-swans/
 │   ├── swan.js           # 程序化瓷偶骨架 + 编舞（17 刚体部件）
 │   ├── worldline.js      # 世界线曲线（弧长 LUT + 平行传输）
 │   ├── ghosts.js         # 残影快照环 + 17 个 InstancedMesh + 彩色瓷影 shader
+│   ├── film.js           # 电影模式：自动运镜 + 标题/字幕 + 时间轴/残影轨道
 │   ├── music.js          # 原声播放与时间轴同步（含掌声段）
 │   ├── score.js          # 时长 / bpm / 段落（音乐、编舞、HUD 共用）
 │   ├── music-data.js     # [旧版] MIDI 合成数据，当前不参与运行时
 │   └── ui.js             # 安静 HUD
 ├── assets/               # three.js 0.185 / HDRI(CC0) / 字体(OFL) / 参考音频
-├── tools/                # serve.mjs（静态服务器）、capture.mjs（无头截图，可选）
+├── tools/                # serve.mjs（静态服务器）、capture.mjs（无头截图）、render-film.mjs（影片渲染）
 ├── docs/                 # design.md、swan-model.md、ghost-engine.md、music-notes.md、reference-video.md
 ├── qa/screenshots/       # 本作渲染截图（README 用）
+├── film/                 # 影像版 poster（MP4 在 GitHub Releases，不随仓库分发）
 ├── CONTRACT.md           # 模块契约（开发用）
 ├── LICENSE               # MIT（代码）
+├── package.json          # 本地脚本（serve / render:film / capture）
 └── README.md
 ```
 

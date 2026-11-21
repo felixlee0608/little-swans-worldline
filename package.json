@@ -1,0 +1,18 @@
+{
+  "name": "little-swans-worldline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Porcelain little swans dancing on a moonlit lake, leaving coloured worldlines — an interactive three.js piece and its deterministic film renderer.",
+  "scripts": {
+    "serve": "node tools/serve.mjs",
+    "capture": "node tools/capture.mjs",
+    "render:film": "node tools/render-film.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.49.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

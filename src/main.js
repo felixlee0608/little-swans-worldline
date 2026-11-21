@@ -15,11 +15,13 @@ import { Ghosts } from './ghosts.js';
 import { Music } from './music.js';
 import { UI } from './ui.js';
 import { SCORE } from './score.js';
+import { createFilm } from './film.js';
 
 const params = new URLSearchParams(location.search);
 const DEBUG = params.has('debug');
 const LOW = params.has('low');
 const SKIP_GATE = params.has('skip');
+const FILM = params.has('film');
 
 const SWAN_COUNT = 4;
 const SPACING = 0.66;   // shoulder-to-shoulder, close to a real corps line; crossed hands clasp at the neighbours' midline
@@ -130,6 +132,14 @@ async function boot() {
   buildHoverPreview();
   app.music = new Music();
   app.ui = new UI(app);
+  if (FILM) {
+    app.film = createFilm({ app, camera, controls });
+    app.filmMode = true;
+    controls.enabled = false;
+    app.ghosts.setOpacity?.(0.46);   // keep the swans legible under the film overlay
+    if (bloom) bloom.strength = 0.20;
+    if (SKIP_GATE) { const g = document.getElementById('gate'); if (g) g.style.display = 'none'; }
+  }
 
   // put the swans in their first pose and take the first snapshot, so the empty stage is already "her"
   poseSwans(0);
@@ -190,6 +200,10 @@ function frame(ts) {
   timer.update(ts);
   const dt = Math.min(timer.getDelta(), 0.1);
   step(dt);
+  if (app.filmMode) {
+    app.film.update(app.T);
+    app.film.applyCamera();
+  }
   composer.render(dt);
 }
 
@@ -239,14 +253,16 @@ function step(dt) {
     : 1;
   app.stage.update(dt, app.T, { level: curtainLevel });
 
-  // camera: slow orbit when idle; the user can always take over
-  const idle = performance.now() - app.lastInteract;
-  controls.autoRotate = !app.frozen && app.state === 'playing' && idle > 5000;
-  controls.update(dt);
+  // camera: slow orbit when idle; film mode drives its own scripted camera
+  if (!app.filmMode) {
+    const idle = performance.now() - app.lastInteract;
+    controls.autoRotate = !app.frozen && app.state === 'playing' && idle > 5000;
+    controls.update(dt);
+  }
 
   if (app.state === 'ended') app.music?.stop();   // the applause ends with the curtain call; never restart it
   else app.music?.update(dt, { T: app.T, frozen: app.frozen, rate: app.rate });
-  app.ui?.update(dt);
+  if (!app.filmMode) app.ui?.update(dt);
 }
 
 // ---------------------------------------------------------------- interaction
@@ -568,6 +584,48 @@ if (DEBUG) {
       return { frames: n, msPerFrame: (performance.now() - t0) / n, ghosts: app.ghosts?.count ?? 0, T: app.T };
     },
     snap,
+    filmInfo() { return { pos: camera.position.toArray(), target: controls.target.toArray(), film: app.film?._debug?.() ?? null }; },
+    // ---- deterministic film capture (used by tools/render-film.mjs) ----
+    filmStart() {
+      renderer.setAnimationLoop(null);
+      app.filmMode = true;
+      controls.enabled = false;
+      app.music?.setMuted?.(true);
+      { const g = document.getElementById('gate'); if (g) g.style.display = 'none'; }
+      app.ghosts.setOpacity?.(0.46);
+      app.T = 0;
+      app.state = 'playing';
+      app.frozen = false;
+      app.rate = 1;
+      app.snapAcc = 0;
+      app.lastSnapT = -0.001;
+      app.ghosts.reset();
+      app.swans.forEach((s) => { s.root.visible = true; });
+      poseSwans(0);
+      app.ghosts.snapshot(0);
+      app.film.update(0);
+      app.film.applyCamera();
+      composer.render(1 / 60);
+      return snap();
+    },
+    filmStep(dt, targetT) {
+      app.state = 'playing';
+      app.frozen = false;
+      app.rate = 1;
+      app.T = Math.max(0, targetT - dt);
+      step(dt);
+      app.film.update(app.T);
+      app.film.applyCamera();
+      composer.render(dt);
+      return snap();
+    },
+    filmStop() {
+      app.film?.dispose();
+      app.film = null;
+      app.filmMode = false;
+      controls.enabled = true;
+      startLoop();
+    },
   };
   function snap() {
     return {

@@ -964,7 +964,7 @@ export class Swan {
     const bowOut = smooth(clamp01((tt - (DE + 1.90)) / 0.95));
     const bow = bowIn * (1 - bowOut);
     const walkT = Math.max(0, tt - (DE + 2.45));
-    const exitX = 1.95 * Math.pow(walkT, 1.05);
+    const exitX = 0.80 * walkT;   // a calm walk-off; the stage light goes down as they leave
     const walking = walkT > 0.02;
     const phase = walkT * Math.PI * 2 * 1.5;
     const step = Math.sin(phase);

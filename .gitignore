@@ -13,3 +13,7 @@ assets/audio/source/
 assets/audio/source-ref/
 
 node_modules/
+
+# 影像版渲染产物（体积大，发布在 GitHub Releases）
+film/*.mp4
+film/render-info.json

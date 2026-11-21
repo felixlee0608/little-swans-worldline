@@ -55,6 +55,8 @@
   .gate-btn.primary { background: rgba(220, 232, 255, 0.16); border-color: rgba(220, 232, 255, 0.34); color: #fff;
     box-shadow: 0 0 30px rgba(160, 200, 255, 0.18); }
   .gate-btn:hover { background: rgba(220, 232, 255, 0.22); border-color: rgba(220, 232, 255, 0.45); }
+  .gate-film { color: rgba(214, 228, 252, 0.55); text-decoration: underline dotted; text-underline-offset: 2px; }
+  .gate-film:hover { color: rgba(236, 244, 255, 0.9); }
   .gate-quiet { margin-top: 16px; font: 400 10.5px/1 system-ui, sans-serif; letter-spacing: 0.1em; color: var(--ink-faint); }
   .gate-load { margin-top: 22px; font: 400 10px/1 system-ui, sans-serif; letter-spacing: 0.22em; color: rgba(190, 205, 235, 0.5); }
   #gate .err { margin-top: 18px; max-width: 460px; color: #ffb4b4; font: 400 12px/1.6 system-ui, sans-serif; letter-spacing: 0; }
@@ -123,7 +125,7 @@
         <button class="gate-btn primary" id="enter" type="button" disabled>进入 · Enter</button>
         <button class="gate-btn" id="enter-quiet" type="button" disabled>无声进入</button>
       </div>
-      <div class="gate-quiet">耳机更佳 &nbsp;·&nbsp; 点击进入以启动音乐</div>
+      <div class="gate-quiet">耳机更佳 &nbsp;·&nbsp; 点击进入以启动音乐 &nbsp;·&nbsp; <a class="gate-film" href="https://github.com/felixlee0608/little-swans-worldline/releases/tag/v1.0-film" target="_blank" rel="noopener">观看影像版 ↗</a></div>
       <div class="gate-load" id="load">正在为舞台布光…</div>
       <div class="err" id="err"></div>
     </div>
