@@ -4,7 +4,7 @@
 
 > **2026-10-29 更新：配乐已改为参考视频原声。**
 > 当前运行时使用 `assets/audio/swan-lake-source.mp3`（103.03s，bpm≈104.37，已裁掉开头 0.67s 静音），由用户提供的参考演出视频（final 版）
-> `~/Movies/涌现AI/20261121-天鹅湖/天鹅湖-四小天鹅芭蕾舞-final.MP4` 抽出（ffmpeg，AAC→MP3 160k）。
+> `~/Movies/涌现AI/craft/little-swans-worldline/天鹅湖-四小天鹅芭蕾舞-final.MP4` 抽出（ffmpeg，AAC→MP3 160k）。
 > `src/music.js` 已重写为"音频缓冲播放 + 时间轴同步"（playhead = T、冻结磁带停转、回溯 seek）。
 > 下文关于 MIDI 合成管线（`music-data.js` + `tools/midi_*.py`）的内容保留为**旧版实现记录**，当前不参与运行时。
 
