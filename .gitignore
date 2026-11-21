@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# 只保留在本地：参考视频抽帧与对比图（版权原因不随仓库分发）
+qa/ref-video/
+qa/comparison.jpg
+qa/console.log
+
+# 旧版合成管线的本地开发物
+assets/audio/preview.wav
+assets/audio/source/
+assets/audio/source-ref/
+
+node_modules/

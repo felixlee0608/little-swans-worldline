@@ -1,0 +1,256 @@
+{
+ "url": "http://127.0.0.1:8782/",
+ "browserVersion": "157.0.8103.78",
+ "shots": [
+  {
+   "file": "qa/screenshots/00-gate.png",
+   "note": "opening gate: title + Enter (the click unlocks the soundtrack)"
+  },
+  {
+   "file": "qa/screenshots/01-opening.png",
+   "note": "after Enter: the four cygnets in the dark, first poses freezing"
+  },
+  {
+   "file": "qa/screenshots/02-line.png",
+   "note": "T≈22s: the little swans line up; four ghost worldlines rising behind them"
+  },
+  {
+   "file": "qa/screenshots/06-hover.png",
+   "note": "hovering the past: the figure of that moment appears on the worldline"
+  },
+  {
+   "file": "qa/screenshots/03-worldlines.png",
+   "note": "T≈38s: side view — four sculptures of frozen poses along the worldlines"
+  },
+  {
+   "file": "qa/screenshots/04-closeup.png",
+   "note": "T≈76s: close-up — porcelain cygnet, gold trim, feathery ghost trail"
+  },
+  {
+   "file": "qa/screenshots/07-bow.png",
+   "note": "curtain call: the four bow together while the last bars play"
+  },
+  {
+   "file": "qa/screenshots/08-exit.png",
+   "note": "curtain call: the linked line walks off stage right, the stage dims"
+  },
+  {
+   "file": "qa/screenshots/05-mobile.png",
+   "note": "mobile 390×844"
+  }
+ ],
+ "notes": [],
+ "gate": {
+  "title": "小天鹅舞曲 · 瓷偶世界线",
+  "load": "轻触进入，开始四小天鹅的夜晚"
+ },
+ "audio": {
+  "ctx": "running",
+  "ready": true,
+  "muted": false,
+  "duration": 103.03,
+  "bpm": 104.37,
+  "sections": [
+   {
+    "name": "intro",
+    "t": 0,
+    "dur": 9.33
+   },
+   {
+    "name": "theme",
+    "t": 9.33,
+    "dur": 21.33
+   },
+   {
+    "name": "middle",
+    "t": 30.66,
+    "dur": 30.34
+   },
+   {
+    "name": "reprise",
+    "t": 61,
+    "dur": 19
+   },
+   {
+    "name": "coda",
+    "t": 80,
+    "dur": 9.6
+   },
+   {
+    "name": "outro",
+    "t": 89.6,
+    "dur": 7.2
+   }
+  ],
+  "pos": 2.69
+ },
+ "line": {
+  "state": "playing",
+  "T": 21.95,
+  "frozen": false,
+  "ghosts": 60,
+  "swans": 4,
+  "music": {
+   "duration": 103.028,
+   "bpm": 104.37,
+   "muted": false
+  },
+  "preview": false,
+  "label": "",
+  "camera": {
+   "pos": [
+    2.81,
+    2.45,
+    9.33
+   ],
+   "target": [
+    -0.35,
+    1.42,
+    -1.8
+   ]
+  }
+ },
+ "hover": {
+  "state": "playing",
+  "T": 22.68,
+  "frozen": false,
+  "ghosts": 60,
+  "swans": 4,
+  "music": {
+   "duration": 103.028,
+   "bpm": 104.37,
+   "muted": false
+  },
+  "preview": true,
+  "label": "−3.8 s",
+  "camera": {
+   "pos": [
+    2.79,
+    2.45,
+    9.33
+   ],
+   "target": [
+    -0.35,
+    1.42,
+    -1.8
+   ]
+  }
+ },
+ "bow": {
+  "state": "playing",
+  "T": 90.9,
+  "frozen": true,
+  "ghosts": 60,
+  "swans": 4,
+  "music": {
+   "duration": 103.028,
+   "bpm": 104.37,
+   "muted": false
+  },
+  "preview": false,
+  "label": "−3.8 s",
+  "camera": {
+   "pos": [
+    2.9,
+    2.45,
+    9.3
+   ],
+   "target": [
+    -0.35,
+    1.42,
+    -1.8
+   ]
+  }
+ },
+ "exit": {
+  "state": "playing",
+  "T": 93.6,
+  "frozen": true,
+  "ghosts": 60,
+  "swans": 4,
+  "music": {
+   "duration": 103.028,
+   "bpm": 104.37,
+   "muted": false
+  },
+  "preview": false,
+  "label": "−3.8 s",
+  "camera": {
+   "pos": [
+    2.9,
+    2.45,
+    9.3
+   ],
+   "target": [
+    -0.35,
+    1.42,
+    -1.8
+   ]
+  }
+ },
+ "perf": {
+  "frames": 2063,
+  "msPerFrame": 0.9695104216697201,
+  "ghosts": 0,
+  "T": 96.8
+ },
+ "mid": {
+  "state": "ended",
+  "T": 96.8,
+  "frozen": false,
+  "ghosts": 0,
+  "swans": 4,
+  "music": {
+   "duration": 103.028,
+   "bpm": 104.37,
+   "muted": false
+  },
+  "preview": false,
+  "label": "−3.8 s",
+  "camera": {
+   "pos": [
+    2.9,
+    2.45,
+    9.3
+   ],
+   "target": [
+    -0.35,
+    1.42,
+    -1.8
+   ]
+  }
+ },
+ "musicAtEnd": {
+  "pos": 97,
+  "ctx": "running",
+  "muted": false
+ },
+ "mobile": {
+  "state": "playing",
+  "T": 12.97,
+  "frozen": false,
+  "ghosts": 60,
+  "swans": 4,
+  "music": {
+   "duration": 103.028,
+   "bpm": 104.37,
+   "muted": true
+  },
+  "preview": false,
+  "label": "",
+  "camera": {
+   "pos": [
+    2.6,
+    2.1,
+    13.4
+   ],
+   "target": [
+    -0.3,
+    1.5,
+    -1.7
+   ]
+  }
+ },
+ "logs": [],
+ "errors": []
+}
