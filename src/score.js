@@ -1,5 +1,5 @@
 // The score of the piece: the soundtrack extracted from the reference performance video
-// (~/Movies/涌现AI/20261101-天鹅湖/天鹅湖-四小天鹅芭蕾舞-final.MP4).
+// (~/Movies/涌现AI/20261121-天鹅湖/天鹅湖-四小天鹅芭蕾舞-final.MP4).
 // The recording contains: first musical attack → 90.2 s of music → applause to the end (103.03 s).
 // The leading 0.672 s of silence has been trimmed; beat period 0.5749 s (≈104.37 BPM) is stable.
 // One source of truth for duration / tempo / section map, shared by the audio engine,
